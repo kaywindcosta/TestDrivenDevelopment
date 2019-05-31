@@ -79,7 +79,7 @@ pipeline {
 				script {
 					mvnHome = tool 'maven'					
 					if(isUnix()) {
-						sh "mvn clean install -DskipTests " 
+						sh "mvn clean install -Pgen-openapi -DskipTests " 
 					} else { 
 						bat "${mvnHome}/bin/mvn clean install -DskipTests " 
 					} 
