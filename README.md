@@ -1,6 +1,6 @@
-# TestDrivenDevelopment
+# Spring Boot TestDrivenDevelopment
 
-TDD approach with code generation using open api 3 standards
+TDD approach with code generation using open api standards, Junits and functional regressions
 
 -generate code from the swagger file
 -Write test cases using rest assured
