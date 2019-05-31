@@ -96,11 +96,11 @@ pipeline {
 					//withMaven(maven: 'maven') { 
 						if(isUnix()) {
 							//sh "mvn clean generate-resources -DskipTests -Djacoco.skip=false -Djacoco.skip.report=false "
-							sh "mvn clean test -Djacoco.skip=false -Djacoco.skip.report=false " 
+							sh "mvn test -Djacoco.skip=false -Djacoco.skip.report=false " 
 						} else { 
 							//bat "mvn clean generate-resources -DskipTests -Djacoco.skip=false -Djacoco.skip.report=false "
 							//bat "${mvnHome}/bin/mvn test -Djacoco.skip=false -Djacoco.skip.report=false "  
-							bat "${mvnHome}/bin/mvn clean test -Djacoco.skip=false -Djacoco.skip.report=false "  
+							bat "${mvnHome}/bin/mvn test -Djacoco.skip=false -Djacoco.skip.report=false "  
 							jacoco()
 						}
 						println "WORKSPACE = " + WORKSPACE
