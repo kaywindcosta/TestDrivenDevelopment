@@ -81,7 +81,7 @@ pipeline {
 					if(isUnix()) {
 						sh "mvn clean install -Pgen-openapi -DskipTests " 
 					} else { 
-						bat "${mvnHome}/bin/mvn clean install -DskipTests " 
+						bat "${mvnHome}/bin/mvn clean install -Pgen-openapi -DskipTests " 
 					} 
 				}
             }
@@ -126,7 +126,7 @@ pipeline {
 					  rtMaven.deployer releaseRepo:'libs-release-local', snapshotRepo:'libs-snapshot-local', server: artifactory_server
 					  rtMaven.resolver releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: artifactory_server
 
-					  rtMaven.run pom: 'pom.xml', goals: 'clean install -DskipTests', buildInfo: buildInfo
+					  rtMaven.run pom: 'pom.xml', goals: 'clean install -Pgen-openapi -DskipTests', buildInfo: buildInfo
 
 					  
 					  artifactory_server.publishBuildInfo buildInfo
