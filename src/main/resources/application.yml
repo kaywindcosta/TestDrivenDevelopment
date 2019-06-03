@@ -11,5 +11,10 @@ logging:
 spring: 
    main :
       allow-bean-definition-overriding : true   
-      
+   h2:
+      console :
+         settings :
+            web-allow-others : true  
 #DB_CLOSE_ON_EXIT: FALSE
+#spring.h2.console.settings.web-allow-others=true
+
