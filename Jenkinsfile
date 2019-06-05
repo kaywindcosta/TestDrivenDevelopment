@@ -71,7 +71,7 @@ pipeline {
 				}
             }
         }
-        stage ('SampleJob - Build') {
+        stage ('TDD DEV - Build') {
         agent any
         when { expression { params.ENV_DEPLOY == 'deploy-to-dev' } }
             steps {
@@ -79,14 +79,14 @@ pipeline {
 				script {
 					mvnHome = tool 'maven'					
 					if(isUnix()) {
-						sh "mvn clean install -Pgen-openapi -DskipTests " 
+						sh "mvn clean install -Pgen-openapi,gen-openapi-model" // -DskipTests
 					} else { 
-						bat "${mvnHome}/bin/mvn clean install -Pgen-openapi -DskipTests " 
+						bat "${mvnHome}/bin/mvn clean install -Pgen-openapi,gen-openapi-model"  // -DskipTests 
 					} 
 				}
             }
         }
-        stage ('SampleJob - Unit Tests') {
+        stage ('TDD -  TestCoverage') {
         agent any
         when { expression { params.ENV_DEPLOY == 'deploy-to-dev' } }
             steps {
@@ -115,7 +115,7 @@ pipeline {
 		agent any
 		when { expression { params.ENV_DEPLOY == 'deploy-to-dev' } }
 			steps {
-				echo 'Building app...'
+				echo 'Building app generate swagger code gen (openapi,gen-openapi-model) and skipTests...'
 				script{
 					def artifactory_server = Artifactory.server "Artifactory"
 					def buildInfo = Artifactory.newBuildInfo()
@@ -126,7 +126,7 @@ pipeline {
 					  rtMaven.deployer releaseRepo:'libs-release-local', snapshotRepo:'libs-snapshot-local', server: artifactory_server
 					  rtMaven.resolver releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: artifactory_server
 
-					  rtMaven.run pom: 'pom.xml', goals: 'clean install -Pgen-openapi -DskipTests', buildInfo: buildInfo
+					  rtMaven.run pom: 'pom.xml', goals: 'clean install -Pgen-openapi,gen-openapi-model -DskipTests', buildInfo: buildInfo
 
 					  
 					  artifactory_server.publishBuildInfo buildInfo
