@@ -38,15 +38,7 @@ public class Controller implements CreatePatientApi, ListAllPatientApi, DeletePa
 	@Override
 	@RequestMapping(value = "/listAllPatient", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	public ResponseEntity<List<PatientResp>> listAllPatientUsingGET() {
-//		getRequest().ifPresent(request -> {
-//			for (MediaType mediaType : MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-//				if (mediaType.isCompatibleWith(MediaType.valueOf("*/*"))) {
-//					ApiUtil.setExampleResponse(request, "*/*",
-//							"{  \"firstName\" : \"firstName\",  \"lastName\" : \"lastName\",  \"gender\" : \"gender\",  \"id\" : \"id\"}");
-//					break;
-//				}
-//			}
-//		});
+
 		return tddService.listAllPatient();
 	}
 
