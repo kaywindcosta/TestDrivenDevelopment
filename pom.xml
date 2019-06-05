@@ -39,7 +39,7 @@
 
 
 
-		<!-- https://mvnrepository.com/artifact/com.jayway.restassured/rest-assured -->
+		<!-- https://mvnrepository.com/artifact/com.jayway.restassured/rest-assured 
 		<dependency>
 			<groupId>com.jayway.restassured</groupId>
 			<artifactId>rest-assured</artifactId>
@@ -51,7 +51,7 @@
 			<artifactId>rest-assured</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+-->
 
 
 	</dependencies>
@@ -129,14 +129,14 @@
 						<artifactId>openapi-generator-maven-plugin</artifactId>
 						<version>3.3.4</version>
 						<executions>
-							<execution>
-								<!-- provide a unique name if there are multiple generate-model executions -->
+							<!-- <execution>
+								provide a unique name if there are multiple generate-model executions
 								<id>generate-model</id>
 								<goals>
 									<goal>generate</goal>
 								</goals>
 								<configuration>
-									<!-- update inputSpec value to macth open api file name -->
+									update inputSpec value to macth open api file name
 									<inputSpec>${project.basedir}/src/main/resources/openapi/openapi.yaml</inputSpec>
 									<validateSpec>true</validateSpec>
 									<generatorName>spring</generatorName>
@@ -147,10 +147,10 @@
 									<generateSupportingFiles>false</generateSupportingFiles>
 									<modelPackage>${project.groupId}.model</modelPackage>
 									<configOptions>
-										<!-- <sourceFolder>src/gen/main/java</sourceFolder> -->
+										<sourceFolder>src/gen/main/java</sourceFolder>
 									</configOptions>
 								</configuration>
-							</execution>
+							</execution> -->
 						</executions>
 					</plugin>
 				</plugins>

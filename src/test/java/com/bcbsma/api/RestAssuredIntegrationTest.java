@@ -2,6 +2,7 @@ package com.bcbsma.api;
 
 import static com.jayway.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -20,6 +21,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.bcbsma.api.config.H2Config;
+import com.bcbsma.api.constant.TddConstant;
 import com.bcbsma.api.h2.H2Application;
 import com.bcbsma.api.model.Patient;
 
@@ -27,10 +29,11 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = {SpringBootApp.class})
-@Import({ H2Application.class ,H2Config.class})
+@ContextConfiguration(classes = { SpringBootApp.class })
+@Import({ H2Application.class, H2Config.class })
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @FixMethodOrder(MethodSorters.DEFAULT)
+//@TestPropertySource(value={"classpath:application.properties"})
 public class RestAssuredIntegrationTest {
 
 	private static final Logger log = LoggerFactory.getLogger(RestAssuredIntegrationTest.class);
@@ -52,17 +55,26 @@ public class RestAssuredIntegrationTest {
 		}
 
 		Patient pat = new Patient();
-		pat.setFirstName("Kaywin");
-		pat.setLastName("Dcosta");
+		pat.setFirstName("Sam");
+		pat.setLastName("Simson");
 		pat.setGender("Male");
 
 		given().contentType("application/json").body(pat).when().post(uri).then().statusCode(200);
-		
+
 	}
 
 	@Test
 	public void secondTestmakeSureListAllWorksFine() {
+		Patient pat = new Patient();
+		pat.setFirstName("TDDDaemon");
+		pat.setLastName("Development");
+		pat.setGender("Male");
 
+		String createresponse = given().contentType("application/json").body(pat).when()
+				.post(SERVER_URL + port + "/createPatient").peek() // Use peek() to print the ouput
+				.then().statusCode(200) // check http status code
+				.extract().asString();
+		assertNotNull(createresponse);
 		try {
 			uri = new URI(SERVER_URL + port + "/listAllPatient");
 		} catch (URISyntaxException e) {
@@ -91,7 +103,16 @@ public class RestAssuredIntegrationTest {
 
 	@Test
 	public void whenGetAllPatients_thenOK() {
+		Patient pat = new Patient();
+		pat.setFirstName("TDD");
+		pat.setLastName("Development");
+		pat.setGender("Male");
 
+		String createresponse = given().contentType("application/json").body(pat).when()
+				.post(SERVER_URL + port + "/createPatient").peek() // Use peek() to print the ouput
+				.then().statusCode(200) // check http status code
+				.extract().asString();
+		assertNotNull(createresponse);
 		try {
 			uri = new URI(SERVER_URL + port + "/listAllPatient");
 		} catch (URISyntaxException e) {
@@ -102,5 +123,49 @@ public class RestAssuredIntegrationTest {
 		assertEquals(HttpStatus.OK.value(), response.getStatusCode());
 	}
 
+	@Test
+	public void createPatientValidateResponseTest() {
+		Patient pat = new Patient();
+		pat.setFirstName("Kaywin");
+		pat.setLastName("Dcosta");
+		pat.setGender("Male");
+
+		String response = given().contentType("application/json").body(pat).when()
+				.post(SERVER_URL + port + "/createPatient").peek() // Use peek() to print the ouput
+				.then().statusCode(200) // check http status code
+				.extract().asString();
+		assertNotNull(response);
+		assertEquals(TddConstant.RECORD_CREATED, response.toString());
+	}
+
+	@Test
+	public void createAndDeletePatientValidateResponseTest() {
+		Patient pat = new Patient();
+		pat.setFirstName("Adolf");
+		pat.setLastName("Hitler");
+		pat.setGender("Male");
+		String response = given().contentType("application/json").body(pat).when()
+				.post(SERVER_URL + port + "/createPatient").peek().then().statusCode(200).extract().asString();
+		assertNotNull(response);
+		String delresponse = given().contentType("application/json").body(pat).when()
+				.post(SERVER_URL + port + "/deletePatient").peek().then().statusCode(200).extract().asString();
+		assertNotNull(delresponse);
+		assertEquals(TddConstant.DELETE_SUCCESSFUL, delresponse.toString());
+	}
+	
+	@Test
+	public void createAndDuplicateTest() {
+		Patient pat = new Patient();
+		pat.setFirstName("Adolf");
+		pat.setLastName("Hitler");
+		pat.setGender("Male");
+		String response = given().contentType("application/json").body(pat).when()
+				.post(SERVER_URL + port + "/createPatient").peek().then().statusCode(200).extract().asString();
+		assertNotNull(response);
+		String delresponse = given().contentType("application/json").body(pat).when()
+				.post(SERVER_URL + port + "/createPatient").peek().then().statusCode(406).extract().asString();
+		assertNotNull(delresponse);
+		assertEquals(TddConstant.RECORD_ALREADY_EXISTS, delresponse.toString());
+	}
 
 }
