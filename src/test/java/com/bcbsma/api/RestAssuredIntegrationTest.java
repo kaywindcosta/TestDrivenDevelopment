@@ -7,16 +7,19 @@ import static org.junit.Assert.assertNotNull;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import org.aspectj.lang.annotation.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpStatus;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -33,17 +36,44 @@ import io.restassured.response.Response;
 @Import({ H2Application.class, H2Config.class })
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @FixMethodOrder(MethodSorters.DEFAULT)
-//@TestPropertySource(value={"classpath:application.properties"})
+@ActiveProfiles("test")
+//@Category(Test.class)
 public class RestAssuredIntegrationTest {
 
 	private static final Logger log = LoggerFactory.getLogger(RestAssuredIntegrationTest.class);
 
 	private final String SERVER_URL = "http://localhost:";
 
+	@Value("${server.url}")
+	private String serverUrl;
+
 	private URI uri = null;
 
 	@LocalServerPort
 	protected int port;
+
+	@Before(value = "")
+	public void before() {
+
+	}
+
+	@Test
+	public void firstTestCreatePatientTest() {
+
+		try {
+			uri = new URI(serverUrl + "/createPatient");
+		} catch (URISyntaxException e) {
+
+		}
+		log.info("#############################Final URL:"+uri);
+		Patient pat = new Patient();
+		pat.setFirstName("Sam");
+		pat.setLastName("Simson");
+		pat.setGender("Male");
+
+		given().contentType("application/json").body(pat).when().post(uri).then().statusCode(406);
+
+	}
 
 	@Test
 	public void firstTestCreatePatient() {
@@ -152,7 +182,7 @@ public class RestAssuredIntegrationTest {
 		assertNotNull(delresponse);
 		assertEquals(TddConstant.DELETE_SUCCESSFUL, delresponse.toString());
 	}
-	
+
 	@Test
 	public void createAndDuplicateTest() {
 		Patient pat = new Patient();

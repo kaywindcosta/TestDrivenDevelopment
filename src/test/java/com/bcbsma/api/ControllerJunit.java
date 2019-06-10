@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -30,6 +31,7 @@ import com.bcbsma.api.service.TddService;
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = Controller.class, secure = false)
 @ContextConfiguration(classes = SpringBootApp.class)
+//@ActiveProfiles("dev")
 public class ControllerJunit {
 
 	@Autowired

@@ -40,18 +40,9 @@
 
 
 		<!-- https://mvnrepository.com/artifact/com.jayway.restassured/rest-assured 
-		<dependency>
-			<groupId>com.jayway.restassured</groupId>
-			<artifactId>rest-assured</artifactId>
-			<version>2.9.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.rest-assured</groupId>
-			<artifactId>rest-assured</artifactId>
-			<scope>test</scope>
-		</dependency>
--->
+			<dependency> <groupId>com.jayway.restassured</groupId> <artifactId>rest-assured</artifactId> 
+			<version>2.9.0</version> <scope>test</scope> </dependency> <dependency> <groupId>io.rest-assured</groupId> 
+			<artifactId>rest-assured</artifactId> <scope>test</scope> </dependency> -->
 
 
 	</dependencies>
@@ -83,6 +74,14 @@
 					</execution>
 				</executions>
 			</plugin>
+			
+			 <!--  <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <argLine>-Dspring.profiles.active=${spring.profiles.active}</argLine>
+                    </configuration>
+                </plugin> -->
 		</plugins>
 	</build>
 
@@ -129,32 +128,41 @@
 						<artifactId>openapi-generator-maven-plugin</artifactId>
 						<version>3.3.4</version>
 						<executions>
-							<!-- <execution>
-								provide a unique name if there are multiple generate-model executions
-								<id>generate-model</id>
-								<goals>
-									<goal>generate</goal>
-								</goals>
-								<configuration>
-									update inputSpec value to macth open api file name
-									<inputSpec>${project.basedir}/src/main/resources/openapi/openapi.yaml</inputSpec>
-									<validateSpec>true</validateSpec>
-									<generatorName>spring</generatorName>
-									<generateApis>false</generateApis>
-									<generateApiTests>false</generateApiTests>
-									<generateModelDocumentation>false</generateModelDocumentation>
-									<generateApiDocumentation>false</generateApiDocumentation>
-									<generateSupportingFiles>false</generateSupportingFiles>
-									<modelPackage>${project.groupId}.model</modelPackage>
-									<configOptions>
-										<sourceFolder>src/gen/main/java</sourceFolder>
-									</configOptions>
-								</configuration>
-							</execution> -->
+							<!-- <execution> provide a unique name if there are multiple generate-model 
+								executions <id>generate-model</id> <goals> <goal>generate</goal> </goals> 
+								<configuration> update inputSpec value to macth open api file name <inputSpec>${project.basedir}/src/main/resources/openapi/openapi.yaml</inputSpec> 
+								<validateSpec>true</validateSpec> <generatorName>spring</generatorName> <generateApis>false</generateApis> 
+								<generateApiTests>false</generateApiTests> <generateModelDocumentation>false</generateModelDocumentation> 
+								<generateApiDocumentation>false</generateApiDocumentation> <generateSupportingFiles>false</generateSupportingFiles> 
+								<modelPackage>${project.groupId}.model</modelPackage> <configOptions> <sourceFolder>src/gen/main/java</sourceFolder> 
+								</configOptions> </configuration> </execution> -->
 						</executions>
 					</plugin>
 				</plugins>
 			</build>
 		</profile>
+		<!-- <profile>
+			<id>dev</id>
+			<activation>
+				<property>
+					<name>spring.profiles.active</name>
+					<value>dev</value>
+				</property>
+			</activation>
+		</profile>
+		<profile>
+			<id>test</id>
+			<activation>
+				<property>
+					<name>spring.profiles.active</name>
+					<value>test</value>
+				</property>
+			</activation>
+		</profile> -->
+		<!-- <profile> <id>category</id> <build> <plugins> <plugin> <artifactId>maven-failsafe-plugin</artifactId> 
+			<version>2.22.0</version> <configuration> <includes> <include>**/*Integration*</include> 
+			</includes> <groups>com.bcbsma.api.RestAssuredIntegrationTest</groups> </configuration> 
+			<executions> <execution> <goals> <goal>integration-test</goal> <goal>verify</goal> 
+			</goals> </execution> </executions> </plugin> </plugins> </build> </profile> -->
 	</profiles>
 </project>

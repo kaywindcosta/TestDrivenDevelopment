@@ -1,6 +1,7 @@
 ---
 server:
   port: 8080
+  url: http://testdrivendevelopment-test.cfapps.io
 
 logging:
   level:

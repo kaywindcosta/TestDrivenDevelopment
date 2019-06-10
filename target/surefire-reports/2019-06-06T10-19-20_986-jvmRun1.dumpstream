@@ -1,0 +1,191 @@
+# Created at 2019-06-06T10:20:14.431
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: DEFAULT
+java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:391)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+# Created at 2019-06-06T10:20:15.471
+Unexpected IOException with stream: 2019-06-06 10:20:15  [INFO  ] o.s.b.w.e.t.TomcatWebServer ? Tomcat initialized with port(s): 0 (http)
+
+
+# Created at 2019-06-06T10:20:15.478
+Unexpected IOException with stream: 2019-06-06 10:20:15  [INFO  ] o.a.c.c.StandardService ? Starting service [Tomcat]
+
+
+# Created at 2019-06-06T10:20:15.481
+Unexpected IOException with stream: 2019-06-06 10:20:15  [INFO  ] o.a.c.c.StandardEngine ? Starting Servlet engine: [Apache Tomcat/9.0.17]
+
+
+# Created at 2019-06-06T10:20:15.537
+Unexpected IOException with stream: 2019-06-06 10:20:15  [INFO  ] o.a.c.c.C.[.[.[/] ? Initializing Spring embedded WebApplicationContext
+
+
+# Created at 2019-06-06T10:20:15.541
+Unexpected IOException with stream: 2019-06-06 10:20:15  [INFO  ] o.s.w.c.ContextLoader ? Root WebApplicationContext: initialization completed in 5935 ms
+
+
+# Created at 2019-06-06T10:20:17.813
+Unexpected IOException with stream: 2019-06-06 10:20:17  [DEBUG ] c.b.a.l.LoggingAdvisor ? Entering method: headerFilter in class: AppConfig$$EnhancerBySpringCGLIB$$2e78b0c5
+
+
+# Created at 2019-06-06T10:20:17.818
+Unexpected IOException with stream: 2019-06-06 10:20:17  [DEBUG ] c.b.a.l.LoggingAdvisor ? Method arguments: []
+
+
+# Created at 2019-06-06T10:20:17.822
+Unexpected IOException with stream: 2019-06-06 10:20:17  [DEBUG ] c.b.a.l.LoggingAdvisor ? Exiting method: headerFilter
+
+
+# Created at 2019-06-06T10:20:18.222
+Unexpected IOException with stream: 2019-06-06 10:20:18  [DEBUG ] c.b.a.l.LoggingAdvisor ? Entering method: init in class: HeaderFilter
+
+
+# Created at 2019-06-06T10:20:18.225
+Unexpected IOException with stream: 2019-06-06 10:20:18  [DEBUG ] c.b.a.l.LoggingAdvisor ? Method arguments: [ApplicationFilterConfig[name=headerFilter, filterClass=com.bcbsma.api.filter.HeaderFilter$$EnhancerBySpringCGLIB$$f47d7d09]]
+
+
+# Created at 2019-06-06T10:20:18.228
+Unexpected IOException with stream: 2019-06-06 10:20:18  [DEBUG ] c.b.a.l.LoggingAdvisor ? Exiting method: init
+
+
+# Created at 2019-06-06T10:20:18.375
+Unexpected IOException with stream: 2019-06-06 10:20:18  [INFO  ] c.z.h.HikariDataSource ? HikariPool-2 - Starting...
+
+
+# Created at 2019-06-06T10:20:18.380
+Unexpected IOException with stream: 2019-06-06 10:20:18  [INFO  ] c.z.h.HikariDataSource ? HikariPool-2 - Start completed.
+
+
+# Created at 2019-06-06T10:20:18.546
+Unexpected IOException with stream: 2019-06-06 10:20:18  [INFO  ] o.h.j.i.u.LogHelper ? HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+
+
+# Created at 2019-06-06T10:20:18.580
+Unexpected IOException with stream: 2019-06-06 10:20:18  [INFO  ] o.h.d.Dialect ? HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+
+
+# Created at 2019-06-06T10:20:18.628
+Unexpected IOException with stream: 2019-06-06 10:20:18  [DEBUG ] o.h.SQL ? drop table patient if exists
+
+
+# Created at 2019-06-06T10:20:18.641
+Unexpected IOException with stream: 2019-06-06 10:20:18  [DEBUG ] o.h.SQL ? create table patient (id varchar(255) not null, first_name varchar(255), gender varchar(255), last_name varchar(255), primary key (id))
+
+
+# Created at 2019-06-06T10:20:18.652
+Unexpected IOException with stream: 2019-06-06 10:20:18  [INFO  ] o.h.t.s.i.SchemaCreatorImpl ? HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@3694461d'
+
+
+# Created at 2019-06-06T10:20:18.656
+Unexpected IOException with stream: 2019-06-06 10:20:18  [INFO  ] o.s.o.j.LocalContainerEntityManagerFactoryBean ? Initialized JPA EntityManagerFactory for persistence unit 'default'
+
+
+# Created at 2019-06-06T10:20:18.909
+Unexpected IOException with stream: 2019-06-06 10:20:18  [INFO  ] o.h.h.i.QueryTranslatorFactoryInitiator ? HHH000397: Using ASTQueryTranslatorFactory
+
+
+# Created at 2019-06-06T10:20:19.980
+Unexpected IOException with stream: 2019-06-06 10:20:19  [DEBUG ] c.b.a.l.LoggingAdvisor ? Entering method: customHeaderInterceptor in class: AppConfig$$EnhancerBySpringCGLIB$$2e78b0c5
+
+
+# Created at 2019-06-06T10:20:19.986
+Unexpected IOException with stream: 2019-06-06 10:20:19  [DEBUG ] c.b.a.l.LoggingAdvisor ? Method arguments: []
+
+
+# Created at 2019-06-06T10:20:19.990
+Unexpected IOException with stream: 2019-06-06 10:20:19  [DEBUG ] c.b.a.l.LoggingAdvisor ? Entering method: customHeaderInterceptor in class: AppConfig$$EnhancerBySpringCGLIB$$2e78b0c5
+
+
+# Created at 2019-06-06T10:20:19.994
+Unexpected IOException with stream: 2019-06-06 10:20:19  [DEBUG ] c.b.a.l.LoggingAdvisor ? Method arguments: []
+
+
+# Created at 2019-06-06T10:20:20.003
+Unexpected IOException with stream: 2019-06-06 10:20:19  [DEBUG ] c.b.a.l.LoggingAdvisor ? Entering method: httpRequestContainer in class: AppConfig$$EnhancerBySpringCGLIB$$2e78b0c5
+
+
+# Created at 2019-06-06T10:20:20.010
+Unexpected IOException with stream: 2019-06-06 10:20:20  [DEBUG ] c.b.a.l.LoggingAdvisor ? Method arguments: []
+
+
+# Created at 2019-06-06T10:20:20.015
+Unexpected IOException with stream: 2019-06-06 10:20:20  [DEBUG ] c.b.a.l.LoggingAdvisor ? Exiting method: httpRequestContainer
+
+
+# Created at 2019-06-06T10:20:20.021
+Unexpected IOException with stream: 2019-06-06 10:20:20  [DEBUG ] c.b.a.l.LoggingAdvisor ? Exiting method: customHeaderInterceptor
+
+
+# Created at 2019-06-06T10:20:20.046
+Unexpected IOException with stream: 2019-06-06 10:20:20  [DEBUG ] c.b.a.l.LoggingAdvisor ? Exiting method: customHeaderInterceptor
+
+
+# Created at 2019-06-06T10:20:20.052
+Unexpected IOException with stream: 2019-06-06 10:20:20  [WARN  ] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration ? spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+
+
+# Created at 2019-06-06T10:20:20.349
+Unexpected IOException with stream: 2019-06-06 10:20:20  [INFO  ] o.s.b.a.e.w.EndpointLinksResolver ? Exposing 2 endpoint(s) beneath base path '/actuator'
+
+
+# Created at 2019-06-06T10:20:20.853
+Unexpected IOException with stream: 2019-06-06 10:20:20  [INFO  ] s.d.s.w.PropertySourcedRequestMappingHandlerMapping ? Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+
+
+# Created at 2019-06-06T10:20:20.871
+Unexpected IOException with stream: 2019-06-06 10:20:20  [DEBUG ] c.b.a.l.LoggingAdvisor ? Entering method: localeResolver in class: AppConfig$$EnhancerBySpringCGLIB$$2e78b0c5
+
+
+# Created at 2019-06-06T10:20:20.874
+Unexpected IOException with stream: 2019-06-06 10:20:20  [DEBUG ] c.b.a.l.LoggingAdvisor ? Method arguments: []
+
+
+# Created at 2019-06-06T10:20:20.877
+Unexpected IOException with stream: 2019-06-06 10:20:20  [DEBUG ] c.b.a.l.LoggingAdvisor ? Exiting method: localeResolver
+
+
+# Created at 2019-06-06T10:20:21.504
+Unexpected IOException with stream: 2019-06-06 10:20:21  [INFO  ] o.s.s.c.ThreadPoolTaskExecutor ? Initializing ExecutorService 'applicationTaskExecutor'
+
+
+# Created at 2019-06-06T10:20:21.800
+Unexpected IOException with stream: 2019-06-06 10:20:21  [WARN  ] o.s.b.a.m.MustacheAutoConfiguration ? Cannot find template location: classpath:/templates/ (please add some templates, check your Mustache configuration, or set spring.mustache.check-template-location=false)
+
+
+# Created at 2019-06-06T10:20:24.252
+Unexpected IOException with stream: 2019-06-06 10:20:24  [INFO  ] s.d.s.w.p.DocumentationPluginsBootstrapper ? Context refreshed
+
+
+# Created at 2019-06-06T10:20:24.256
+Unexpected IOException with stream: 2019-06-06 10:20:24  [INFO  ] s.d.s.w.p.DocumentationPluginsBootstrapper ? Found 1 custom documentation plugin(s)
+
+
+# Created at 2019-06-06T10:20:24.270
+Unexpected IOException with stream: 2019-06-06 10:20:24  [INFO  ] s.d.s.w.s.ApiListingReferenceScanner ? Scanning for api listing references
+
+
+# Created at 2019-06-06T10:20:24.343
+Unexpected IOException with stream: 2019-06-06 10:20:24  [INFO  ] o.s.b.w.e.t.TomcatWebServer ? Tomcat started on port(s): 61913 (http) with context path ''
+
+
+# Created at 2019-06-06T10:20:24.347
+Unexpected IOException with stream: 2019-06-06 10:20:24  [INFO  ] c.b.a.TestDrivenDevelopmentApplicationTest ? Started TestDrivenDevelopmentApplicationTest in 20.863 seconds (JVM running for 61.507)
+
+
+# Created at 2019-06-06T10:20:24.368
+Unexpected IOException: 5,1,com.bcbsma.api.TestDrivenDevelopmentApplicationTest,contextLoads(com.bcbsma.api.TestDrivenDevelopmentApplicationTest),null,null,null
+
+
+# Created at 2019-06-06T10:20:24.527
+Unexpected IOException: 6,1,com.bcbsma.api.TestDrivenDevelopmentApplicationTest,contextLoads(com.bcbsma.api.TestDrivenDevelopmentApplicationTest),null,null,null
+
+
+# Created at 2019-06-06T10:20:24.533
+Unexpected IOException: 2,1,org.apache.maven.surefire.junit4.JUnit4Provider,com.bcbsma.api.TestDrivenDevelopmentApplicationTest,null,null,null
+
+
