@@ -57,23 +57,23 @@ public class RestAssuredIntegrationTest {
 
 	}
 
-	@Test
-	public void firstTestCreatePatientTest() {
+// 	@Test
+// 	public void firstTestCreatePatientTest() {
 
-		try {
-			uri = new URI(serverUrl + "/createPatient");
-		} catch (URISyntaxException e) {
+// 		try {
+// 			uri = new URI(serverUrl + "/createPatient");
+// 		} catch (URISyntaxException e) {
 
-		}
-		log.info("#############################Final URL:"+uri);
-		Patient pat = new Patient();
-		pat.setFirstName("Sam");
-		pat.setLastName("Simson");
-		pat.setGender("Male");
+// 		}
+// 		log.info("#############################Final URL:"+uri);
+// 		Patient pat = new Patient();
+// 		pat.setFirstName("Sam");
+// 		pat.setLastName("Simson");
+// 		pat.setGender("Male");
 
-		given().contentType("application/json").body(pat).when().post(uri).then().statusCode(406);
+// 		given().contentType("application/json").body(pat).when().post(uri).then().statusCode(406);
 
-	}
+// 	}
 
 	@Test
 	public void firstTestCreatePatient() {
