@@ -86,21 +86,7 @@ pipeline {
 				}
             }
         }
-	stage ('TDD Regression Test') {
-        agent any
-        when { expression { params.ENV_DEPLOY == 'regression-test' } }
-            steps {
-                echo 'Regression Test test env...'
-				script {
-					mvnHome = tool 'maven'					
-					if(isUnix()) {
-						sh "mvn -q test -Dtest=IntegrationTester" 
-					} else { 
-						bat "${mvnHome}/bin/mvn -q test -Dtest=IntegrationTester" 
-					} 
-				}
-            }
-        }
+	
         stage ('TDD -  TestCoverage') {
         agent any
         when { expression { params.ENV_DEPLOY == 'deploy-to-dev' } }
@@ -211,6 +197,21 @@ pipeline {
 					}
 			    }
 			}
+        }
+	stage ('TDD Regression Test') {
+        agent any
+        when { expression { params.ENV_DEPLOY == 'regression-test' } }
+            steps {
+                echo 'Regression Test test env...'
+				script {
+					mvnHome = tool 'maven'					
+					if(isUnix()) {
+						sh "mvn -q test -Dtest=IntegrationTester" 
+					} else { 
+						bat "${mvnHome}/bin/mvn -q test -Dtest=IntegrationTester" 
+					} 
+				}
+            }
         }
         stage ('Deploy Proxy') {
         agent any
