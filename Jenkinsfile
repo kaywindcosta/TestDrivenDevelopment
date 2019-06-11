@@ -18,7 +18,7 @@ pipeline {
 		def testUrl = 'testing-bcbs-test-app.cfapps.io'
     }
 	parameters {
-		choice(choices:'deploy-to-dev\ndeploy-proxy-dev\ndeploy-kvm-dev\ndeploy-to-test',description:'Which Env',name:'ENV_DEPLOY')
+		choice(choices:'deploy-to-dev\ndeploy-proxy-dev\ndeploy-kvm-dev\ndeploy-to-test\nregression-test',description:'Which Env',name:'ENV_DEPLOY')
 		choice(choices:'NO\nYES',description:'Deploy to Test env?',name:'DEPLOY_TO_TEST')
 		//string(name:'ARTIFACT_VERSION',defaultValue:'',description:'Enter Artifact version from Artifactory.')
 		string(name:'ARTIFACT_ID',defaultValue:'',description:'Enter ARTIFACT ID (same as repo name) to build.')
@@ -82,6 +82,21 @@ pipeline {
 						sh "mvn clean install -Pgen-openapi,gen-openapi-model" // -DskipTests
 					} else { 
 						bat "${mvnHome}/bin/mvn clean install -Pgen-openapi,gen-openapi-model"  // -DskipTests 
+					} 
+				}
+            }
+        }
+	stage ('TDD Regression Test') {
+        agent any
+        when { expression { params.ENV_DEPLOY == 'regression-test' } }
+            steps {
+                echo 'Regression Test test env...'
+				script {
+					mvnHome = tool 'maven'					
+					if(isUnix()) {
+						sh "mvn -q test -Dtest=IntegrationTester" 
+					} else { 
+						bat "${mvnHome}/bin/mvn -q test -Dtest=IntegrationTester" 
 					} 
 				}
             }
